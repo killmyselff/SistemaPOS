@@ -14,7 +14,7 @@ interface SearchBarProps {
 export function SearchBar({
   value,
   onChange,
-  placeholder = 'Search products...',
+  placeholder = 'Buscar productos...',
 }: SearchBarProps) {
   return (
     <InputGroup>

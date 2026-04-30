@@ -19,28 +19,28 @@ interface DashboardProps {
 export function Dashboard({ summary }: DashboardProps) {
   const stats = [
     {
-      title: 'Total Sales',
+      title: 'Ventas Totales',
       value: formatCurrency(summary.totalSales),
       icon: DollarSign,
       color: 'text-success',
       bgColor: 'bg-success/10',
     },
     {
-      title: 'Total Orders',
+      title: 'Pedidos Totales',
       value: formatNumber(summary.totalOrders),
       icon: ShoppingBag,
       color: 'text-primary',
       bgColor: 'bg-primary/10',
     },
     {
-      title: 'Average Ticket',
+      title: 'Ticket Promedio',
       value: formatCurrency(summary.averageTicket),
       icon: TrendingUp,
       color: 'text-accent',
       bgColor: 'bg-accent/10',
     },
     {
-      title: 'Products Sold',
+      title: 'Productos Vendidos',
       value: formatNumber(
         summary.topProducts.reduce((sum, p) => sum + p.quantity, 0)
       ),
@@ -55,8 +55,8 @@ export function Dashboard({ summary }: DashboardProps) {
   return (
     <div className="space-y-6 p-6">
       <div>
-        <h2 className="text-2xl font-bold text-foreground">Dashboard</h2>
-        <p className="text-muted-foreground">{"Today's"} sales overview</p>
+        <h2 className="text-2xl font-bold text-foreground">Panel</h2>
+        <p className="text-muted-foreground">Resumen de ventas de hoy</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -84,13 +84,13 @@ export function Dashboard({ summary }: DashboardProps) {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Award className="h-5 w-5" />
-            Top Selling Products
+            Productos Más Vendidos
           </CardTitle>
         </CardHeader>
         <CardContent>
           {summary.topProducts.length === 0 ? (
             <p className="text-muted-foreground text-center py-8">
-              No sales data yet. Complete some orders to see top products.
+              No hay datos de ventas aún. Completa algunos pedidos para ver los productos más vendidos.
             </p>
           ) : (
             <div className="space-y-4">

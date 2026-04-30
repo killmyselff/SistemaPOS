@@ -25,7 +25,15 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
       <CardContent className="p-4">
         <div className="relative mb-3">
           <div className="aspect-square rounded-lg bg-muted flex items-center justify-center overflow-hidden">
-            <Package className="h-12 w-12 text-muted-foreground/50" />
+            {product.image ? (
+              <img
+                src={product.image}
+                alt={product.name}
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+              />
+            ) : (
+              <Package className="h-12 w-12 text-muted-foreground/50" />
+            )}
           </div>
           {isLowStock && !isOutOfStock && (
             <Badge

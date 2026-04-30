@@ -99,6 +99,6 @@ export {
   EmptyHeader,
   EmptyTitle,
   EmptyDescription,
-  EmptyContent,
   EmptyMedia,
+  EmptyContent,
 }

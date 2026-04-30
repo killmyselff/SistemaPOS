@@ -11,7 +11,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Empty } from '@/components/ui/empty'
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from '@/components/ui/empty'
 import { CartItemRow } from './CartItemRow'
 import {
   ShoppingCart,
@@ -45,9 +51,9 @@ export function Cart({
   const hasItems = items.length > 0
 
   const paymentMethods: { method: PaymentMethod; label: string; icon: React.ElementType }[] = [
-    { method: 'cash', label: 'Cash', icon: Banknote },
-    { method: 'card', label: 'Card', icon: CreditCard },
-    { method: 'transfer', label: 'Transfer', icon: Building2 },
+    { method: 'cash', label: 'Efectivo', icon: Banknote },
+    { method: 'card', label: 'Tarjeta', icon: CreditCard },
+    { method: 'transfer', label: 'Transferencia', icon: Building2 },
   ]
 
   return (
@@ -56,7 +62,7 @@ export function Cart({
         <div className="flex items-center justify-between">
           <CardTitle className="flex items-center gap-2 text-lg">
             <ShoppingCart className="h-5 w-5" />
-            Current Order
+            Pedido Actual
           </CardTitle>
           {hasItems && (
             <Button
@@ -66,7 +72,7 @@ export function Cart({
               onClick={onClearCart}
             >
               <Trash2 className="h-4 w-4 mr-1" />
-              Clear
+              Limpiar
             </Button>
           )}
         </div>
@@ -75,11 +81,17 @@ export function Cart({
       <CardContent className="flex-1 flex flex-col overflow-hidden p-4 pt-0">
         {!hasItems ? (
           <div className="flex-1 flex items-center justify-center">
-            <Empty
-              icon={ShoppingCart}
-              title="Cart is empty"
-              description="Add products to start a new order"
-            />
+            <Empty>
+              <EmptyHeader>
+                <EmptyMedia>
+                  <ShoppingCart />
+                </EmptyMedia>
+                <EmptyTitle>El carrito está vacío</EmptyTitle>
+                <EmptyDescription>
+                  Añade productos para iniciar un nuevo pedido
+                </EmptyDescription>
+              </EmptyHeader>
+            </Empty>
           </div>
         ) : (
           <>
@@ -100,35 +112,33 @@ export function Cart({
               <Separator />
 
               <div className="space-y-2 text-sm">
-                <div className="flex justify-between text-muted-foreground">
+                <div className="flex justify-between">
                   <span>Subtotal</span>
                   <span>{formatCurrency(subtotal)}</span>
                 </div>
-                <div className="flex justify-between text-muted-foreground">
-                  <span>Tax (16%)</span>
+                <div className="flex justify-between">
+                  <span>Impuestos</span>
                   <span>{formatCurrency(tax)}</span>
                 </div>
-                <Separator />
-                <div className="flex justify-between font-bold text-lg">
+                <div className="flex justify-between font-bold">
                   <span>Total</span>
-                  <span className="text-primary">{formatCurrency(total)}</span>
+                  <span>{formatCurrency(total)}</span>
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <p className="text-xs text-muted-foreground font-medium">
-                  Payment Method
+              <div className="space-y-2 pt-2">
+                <p className="text-xs text-muted-foreground">
+                  Seleccionar método de pago
                 </p>
                 <div className="grid grid-cols-3 gap-2">
                   {paymentMethods.map(({ method, label, icon: Icon }) => (
                     <Button
                       key={method}
                       variant={selectedPayment === method ? 'default' : 'outline'}
-                      size="sm"
-                      className="flex flex-col gap-1 h-auto py-2"
+                      className="h-14 flex-col gap-1"
                       onClick={() => setSelectedPayment(method)}
                     >
-                      <Icon className="h-4 w-4" />
+                      <Icon className="h-5 w-5" />
                       <span className="text-xs">{label}</span>
                     </Button>
                   ))}
@@ -136,11 +146,10 @@ export function Cart({
               </div>
 
               <Button
-                className="w-full h-12 text-base font-semibold"
-                size="lg"
+                className="w-full h-12 text-base"
                 onClick={() => onCheckout(selectedPayment)}
               >
-                Complete Order - {formatCurrency(total)}
+                Pagar {formatCurrency(total)}
               </Button>
             </div>
           </>

@@ -31,9 +31,9 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
   const { theme, setTheme } = useTheme()
 
   const navigation = [
-    { id: 'pos' as const, label: 'POS', icon: Store },
-    { id: 'history' as const, label: 'Orders', icon: History },
-    { id: 'dashboard' as const, label: 'Dashboard', icon: LayoutDashboard },
+    { id: 'pos' as const, label: 'TPV', icon: Store },
+    { id: 'history' as const, label: 'Pedidos', icon: History },
+    { id: 'dashboard' as const, label: 'Panel', icon: LayoutDashboard },
   ]
 
   return (
@@ -45,7 +45,7 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
           </div>
           <div>
             <h1 className="font-bold text-foreground">QuickPOS</h1>
-            <p className="text-xs text-muted-foreground">Point of Sale</p>
+            <p className="text-xs text-muted-foreground">Punto de Venta</p>
           </div>
         </div>
 
@@ -82,7 +82,7 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
         >
           <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+          <span className="sr-only">Cambiar tema</span>
         </Button>
 
         <DropdownMenu>
@@ -92,11 +92,11 @@ export function Header({ currentView, onViewChange }: HeaderProps) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <User className="h-4 w-4 mr-2" />
-              Profile
+              Perfil
             </DropdownMenuItem>
             <DropdownMenuItem>
               <Settings className="h-4 w-4 mr-2" />

@@ -27,7 +27,7 @@ export function ReceiptDialog({ order, open, onClose }: ReceiptDialogProps) {
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-success">
             <CheckCircle2 className="h-5 w-5" />
-            Order Complete!
+            ¡Pedido Completado!
           </DialogTitle>
         </DialogHeader>
 
@@ -39,7 +39,7 @@ export function ReceiptDialog({ order, open, onClose }: ReceiptDialogProps) {
                 {formatDate(new Date(order.createdAt))}
               </p>
               <p className="text-xs text-muted-foreground">
-                Order #{order.id.slice(0, 8)}
+                Pedido #{order.id.slice(0, 8)}
               </p>
             </div>
 
@@ -64,7 +64,7 @@ export function ReceiptDialog({ order, open, onClose }: ReceiptDialogProps) {
                 <span>{formatCurrency(order.subtotal)}</span>
               </div>
               <div className="flex justify-between">
-                <span>Tax (16%)</span>
+                <span>Impuesto (16%)</span>
                 <span>{formatCurrency(order.tax)}</span>
               </div>
               <div className="flex justify-between font-bold text-sm pt-2">
@@ -76,24 +76,24 @@ export function ReceiptDialog({ order, open, onClose }: ReceiptDialogProps) {
             <Separator className="my-3" />
 
             <div className="text-center text-xs space-y-1">
-              <p className="capitalize">Paid by {order.paymentMethod}</p>
-              <p className="text-muted-foreground">Thank you for your purchase!</p>
+              <p className="capitalize">Pagado con {order.paymentMethod}</p>
+              <p className="text-muted-foreground">¡Gracias por tu compra!</p>
             </div>
           </div>
 
           <div className="flex gap-2">
             <Button variant="outline" className="flex-1" onClick={onClose}>
               <Printer className="h-4 w-4 mr-2" />
-              Print
+              Imprimir
             </Button>
             <Button variant="outline" className="flex-1" onClick={onClose}>
               <Download className="h-4 w-4 mr-2" />
-              Download
+              Descargar
             </Button>
           </div>
 
           <Button className="w-full" onClick={onClose}>
-            New Order
+            Nuevo Pedido
           </Button>
         </div>
       </DialogContent>
